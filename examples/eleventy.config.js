@@ -15,8 +15,10 @@ export default function (eleventyConfig) {
   // The spliced <wa-*> HTML must survive markdown rendering.
   eleventyConfig.amendLibrary('md', (md) => md.set({ html: true }));
 
-  // Copy image + download assets referenced by index.md.
+  // Copy image, video + download assets referenced by index.md.
   eleventyConfig.addPassthroughCopy('*.png');
+  eleventyConfig.addPassthroughCopy('*.mp4');
+  eleventyConfig.addPassthroughCopy('*.jpg');
   eleventyConfig.addPassthroughCopy('downloads');
 
   return {
