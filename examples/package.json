@@ -1,0 +1,16 @@
+{
+  "name": "eleventy-plugin-webawesome-examples",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example Eleventy site showcasing eleventy-plugin-webawesome",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "eleventy-plugin-webawesome": "file:.."
+  }
+}
