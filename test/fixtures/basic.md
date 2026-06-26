@@ -25,3 +25,9 @@ This is inside a code block and must NOT become a callout.
 A library of web components.
 ///
 //////
+
+^^^
+Click to expand
+>>>
+A **detailed** explanation with a [link](https://example.com).
+^^^

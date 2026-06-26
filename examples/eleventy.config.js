@@ -12,8 +12,8 @@ export default function (eleventyConfig) {
     imageDialog: { defaultWidth: '90vh' },
   });
 
-  // The spliced <wa-*> HTML must survive markdown rendering.
-  eleventyConfig.amendLibrary('md', (md) => md.set({ html: true }));
+  // No need to enable raw HTML here — the plugin turns on `html: true` and
+  // installs a block rule so the spliced <wa-*> components render correctly.
 
   // Copy image, video + download assets referenced by index.md.
   eleventyConfig.addPassthroughCopy('*.png');

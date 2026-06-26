@@ -1,4 +1,6 @@
+import type MarkdownIt from 'markdown-it';
 import { process, configure, type ProcessOptions } from 'markawesome-js';
+import { waBlocks } from './wa-block-rule.js';
 
 /**
  * Image-dialog configuration. `true` enables with engine defaults; an object
@@ -44,6 +46,12 @@ export interface EleventyConfigLike {
     extensions: string | string[],
     callback: (data: PreprocessorData, content: string) => string | undefined,
   ): void;
+  /**
+   * Mutate a template library after Eleventy builds it. Eleventy stacks these
+   * callbacks on the live instance at engine init (before any rendering), so
+   * the plugin's amendment composes with any the consumer registers.
+   */
+  amendLibrary(name: string, callback: (library: unknown) => void): void;
 }
 
 // Translate the plugin's imageDialog option into the engine's process option.
@@ -94,5 +102,15 @@ export default function webawesome(
     }
 
     return process(content, processOptions);
+  });
+
+  // Make markdown-it render block-level `<wa-*>` components correctly. Without
+  // this, markdown-it wraps each block component in a `<p>`; the browser then
+  // auto-closes that `<p>` through the custom element and ejects the body, so
+  // the component renders empty. `waBlocks` registers a block rule that treats
+  // `<wa-*>` components as pass-through HTML blocks and enables raw HTML
+  // (`html: true`) — which the spliced tags require to survive at all.
+  eleventyConfig.amendLibrary('md', (library) => {
+    waBlocks(library as MarkdownIt);
   });
 }

@@ -17,6 +17,48 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Aligned placements + `skidding` for popovers and tooltips, and a per-tab `disabled` flag, via markawesome-js's expanded `popover`/`tooltip`/`tabs` transformers. `<wa-popover>`/`<wa-tooltip>` now accept all twelve Web Awesome placements (the four primary plus the eight aligned variants `top-start`, `bottom-end`, …) and a `skidding:N` token that offsets the floating element *along* its target (negative values allowed), complementing the existing `distance:N` (offset *away*). A leading `disabled` token on a `+++ ` tab item header (e.g. `+++ disabled Coming soon`) renders the tab but prevents selection, mirroring the accordion item flags.
 - Example site adds cases for each: an "Aligned Placement and Skidding" subsection in both `## Popovers` and `## Tooltips`, and a "Disabled Tab" subsection in `## Tab Groups`. Validated live in the browser against the examples kit (WA 3.9.0): the components upgrade and the attributes reflect and take effect in the live DOM — `placement="bottom-end"` anchors the popover to its trigger's end edge; toggling `skidding` from 0 to 12 shifts the rendered popup exactly 12px along the trigger axis; the tooltip parses a negative `skidding="-4"`; and `<wa-tab disabled>` renders `aria-disabled="true"` with `tabindex="-1"` and stays non-activatable on click (a normal tab still activates, the disabled one is ignored).
 
+### Changed
+
+- The plugin now enables raw HTML (`html: true`) on Eleventy's markdown-it and
+  installs a block rule for `<wa-*>` components on its own — you no longer need to
+  add `eleventyConfig.amendLibrary('md', (md) => md.set({ html: true }))`
+  yourself; **drop that line**. Trade-off, stated plainly: enabling `html: true`
+  is global to that markdown-it instance, so raw HTML is now allowed in **all** of
+  the site's Markdown (this was already required for the plugin to do anything —
+  the plugin just owns it now). If you render untrusted Markdown through the same
+  pipeline, sanitize downstream, or override `html` in a later `amendLibrary`
+  call.
+
+### Fixed
+
+- Block-level components — callouts, cards, details, accordions, tab panels,
+  dialogs, popovers, and carousels — rendered as **empty boxes** with their text
+  spilled out beneath them. markdown-it wrapped each block `<wa-*>` in a `<p>`,
+  and the browser then auto-closed that `<p>` *through* the custom element,
+  ejecting the component's body. A new markdown-it block rule recognises block
+  `<wa-*>` components as pass-through HTML blocks, so the body stays inside the
+  component. Inline components (button/tag/badge/tooltip labels) were never
+  affected and still render. **Top-level** block components now match the
+  Jekyll/Kramdown build. A *block* component **nested inside another container's
+  item body** (e.g. a callout inside an accordion item) was wrapped in a `<p>` by
+  the markawesome-js engine itself, before Eleventy's markdown-it runs — that is
+  fixed at the source in `markawesome-js` (its internal Markdown conversion now
+  matches the Ruby engine's Kramdown), so nested components also render correctly
+  with a current engine.
+
+### Security
+
+- **The plugin now enables raw HTML (`html: true`) globally on Eleventy's
+  markdown-it.** This is required to render the generated `<wa-*>` tags, and it was
+  already the documented setup step before this release — but it is now applied
+  automatically, so be aware: raw HTML (including `<script>`) in **any** of your
+  Markdown sources now passes through to the output. This is safe for trusted,
+  author-controlled content (the typical static-site case). If you render
+  untrusted Markdown through the same pipeline, sanitize the output downstream or
+  route that content through a separate `html: false` markdown-it instance. You can
+  override the option in a later `amendLibrary` call, at the cost of block
+  components rendering empty again.
+
 > _Dev note:_ this consumes the **unreleased** markawesome-js engine via a local
 > link; the published `markawesome-js` dependency bump is deferred to the
 > coordinated release.

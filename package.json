@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-webawesome",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Eleventy plugin that transforms custom Markdown syntax into Web Awesome web components (via markawesome-js)",
   "keywords": [
     "eleventy",

@@ -22,8 +22,9 @@ async function build(register: (cfg: FullConfig) => void): Promise<RenderedFile[
     configPath: false,
     config: (eleventyConfig: unknown) => {
       const cfg = eleventyConfig as FullConfig;
-      // markdown-it must allow raw HTML so the spliced <wa-*> tags pass through.
-      cfg.setLibrary('md', markdownIt({ html: true }));
+      // Provide a vanilla markdown-it with raw HTML OFF — the plugin must turn
+      // it on itself (via amendLibrary) for the spliced <wa-*> tags to survive.
+      cfg.setLibrary('md', markdownIt());
       register(cfg);
     },
   });
@@ -50,6 +51,15 @@ describe('eleventy-plugin-webawesome', () => {
     expect(content).toContain('<wa-button variant="brand" size="large" href="https://example.com">');
     expect(content).toContain('<wa-tooltip');
     expect(content).toContain('<wa-accordion');
+
+    // Block components keep their content *inside* them: markdown-it must not
+    // wrap them in a <p> (the browser would otherwise eject the block body and
+    // the component would render empty). Proven end-to-end through Eleventy's
+    // own markdown-it, with the plugin enabling raw HTML on its own.
+    expect(content).not.toMatch(/<p>\s*<wa-callout/);
+    expect(content).toMatch(/<wa-callout variant="brand"><wa-icon[^>]*><\/wa-icon><p>/);
+    expect(content).not.toMatch(/<p>\s*<wa-details/);
+    expect(content).not.toContain('<p></span>'); // wa-details summary not ejected
 
     // Fenced code block survived (not turned into a callout) and rendered as code.
     expect(content).toContain('<pre');
