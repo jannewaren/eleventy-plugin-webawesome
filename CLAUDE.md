@@ -8,6 +8,29 @@ A thin Eleventy 3.x plugin that registers a single **preprocessor** named `marka
 
 It is the Node counterpart to the Ruby `markawesome` + `jekyll-webawesome` pair (the README has a Jekyll→11ty migration table).
 
+## The markawesome ecosystem — keep the syntax in sync
+
+The Markawesome-flavoured Markdown syntax spans **five repositories that must
+stay in lockstep**:
+
+| Repo | Role | Stack | Registry |
+|------|------|-------|----------|
+| `markawesome` | **Authors** the syntax (engine) | Ruby | RubyGems |
+| `markawesome-js` | **Authors** the syntax (engine) | TypeScript / Node | npm |
+| `jekyll-webawesome` | **Uses** it (Jekyll integration) | Ruby | RubyGems |
+| `eleventy-plugin-webawesome` | **Uses** it (Eleventy integration) | Node | npm |
+| `markawesome-vscode` | **Produces** it (snippets/completions/validation) | TypeScript | VS Code Marketplace |
+
+**This repo's role:** **uses** the syntax — it consumes the `markawesome-js` engine
+and defines no syntax of its own. Syntax changes belong in the engines, not here.
+
+**Sync rule:** any change to the Markawesome Markdown syntax must land in **both
+engines** (`markawesome` *and* `markawesome-js`) so the Ruby and Node worlds accept
+identical input, **and** in `markawesome-vscode` so the editor emits it. The VS Code
+extension is shared across both worlds, so it may only produce syntax that **both**
+engines support. Confirm the engines still agree via `markawesome-js`'s
+`test/parity-corpus.test.ts` plus the Ruby specs in `markawesome/spec/`.
+
 ## Commands
 
 ```bash
@@ -56,3 +79,16 @@ Keep that distinction in mind; they are not interchangeable.
 
 - `tsup` emits both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) plus `.d.ts`, targeting node18.
 - `markawesome-js` and `@11ty/eleventy` are kept **external** in `tsup.config.ts` so the consumer resolves a single copy of the engine (its internal markdown-it stays encapsulated). Don't bundle them.
+
+## Releases are tagged to match the published version
+
+Every version published to npm gets a matching **GitHub Release**, so the repo's
+releases line up 1:1 with what's installable:
+
+1. Tag the released commit `vX.Y.Z` — the same version as `package.json`.
+2. Push the commit and the tag.
+3. `gh release create vX.Y.Z` with notes drawn from `CHANGELOG.md`.
+
+The GitHub Release tag **must equal** the version published to npm. When a syntax
+change requires a new `markawesome-js`, bump the `markawesome-js` dependency range
+here and release this plugin after the engine.
