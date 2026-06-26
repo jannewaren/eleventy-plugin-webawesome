@@ -6,6 +6,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-26
+
 ### Added
 
 - Video and video playlist embedding, via markawesome-js's new `video` transformer. A `;;;` fence wraps a single `<wa-video>` and a `;;;;;;` container wraps bare `;;;` items into a `<wa-video-playlist>` (block alternatives `:::wa-video` / `:::wa-video-playlist`). The body's first markdown link supplies the video `title`/`src` and the first image supplies the `poster`; tokens cover `controls:none|standard|full`, `preload:auto|metadata|none`, and the `autoplay`/`autoplay-muted`/`autoplay-on-visible`/`loop`/`muted` flags. The playlist's `controls` preset is forwarded to every child. Both components are Web Awesome **Pro** (experimental).
@@ -19,6 +21,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Updated `markawesome-js` dependency to `^0.2.0` (the new `video`/`date`
+  transformers and the nested block-component `<p>` fix come from there).
 - The plugin now enables raw HTML (`html: true`) on Eleventy's markdown-it and
   installs a block rule for `<wa-*>` components on its own — you no longer need to
   add `eleventyConfig.amendLibrary('md', (md) => md.set({ html: true }))`
@@ -89,5 +93,6 @@ Initial release.
   feature).
 - `markawesome-js` `^0.1.0` (regular dependency).
 
-[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.2.0
 [0.1.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.1.0
