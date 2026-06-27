@@ -6,6 +6,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Example site's new `## Tree` section exercises markawesome-js's new `tree` transformer — a `<wa-tree>` / `<wa-tree-item>` hierarchy rendered from a nested Markdown bullet list (the `||||||` fence). Two cases: a ZIP-contents tree (`open` + folder/file icons) and a deeply nested Peppol BIS 3.0 invoice element structure (proving colon-bearing labels like `cbc:ID` render verbatim). Requires the unreleased `markawesome-js`; local verification needs the workspace `markawesome-js` linked (e.g. `npm link` / a `file:` dep) since nothing is published yet.
+
 ## [0.2.0] - 2026-06-26
 
 ### Added
