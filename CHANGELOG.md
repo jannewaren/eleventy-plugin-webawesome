@@ -12,7 +12,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- Example site now loads Web Awesome via the **pinned 3.9.0 CDN** (`ka-p.webawesome.com/kit/…/webawesome@3.9.0/…` stylesheets + autoloader in `_includes/base.njk`) instead of the auto-updating kit script (`kit.webawesome.com/43e2fc18755d4267.js`), mirroring the `jekyll-webawesome` examples. Pinning the version makes the rendered output deterministic and visual validation reproducible — the kit URL hid which WA version it served, so the version drifted silently. The tailspin theme / vogue palette / indigo brand and the FA Pro kit code are now set explicitly on `<html>`; the example CSS is unchanged so the appearance is preserved.
+- Example site now loads Web Awesome via the **pinned 3.10.0 CDN** (`ka-p.webawesome.com/kit/…/webawesome@3.10.0/…` stylesheets + autoloader in `_includes/base.njk`) instead of the auto-updating kit script (`kit.webawesome.com/43e2fc18755d4267.js`), mirroring the `jekyll-webawesome` examples. Pinning the version makes the rendered output deterministic and visual validation reproducible — the kit URL hid which WA version it served, so the version drifted silently. The tailspin theme / vogue palette / indigo brand and the FA Pro kit code are now set explicitly on `<html>`; the example CSS is unchanged so the appearance is preserved. Bumped in lockstep with the `jekyll-webawesome` examples; both example sites now pin `webawesome@3.10.0`.
 
 ## [0.2.0] - 2026-06-26
 
