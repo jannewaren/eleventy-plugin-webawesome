@@ -55,7 +55,8 @@ export default function (eleventyConfig) {
 The plugin also installs a block rule for `<wa-*>` components so block-level
 components render correctly — you don't need to configure either.
 
-Then add the Web Awesome CDN kit `<script>` to your layout so the components
+Then add the Web Awesome CDN includes to your layout — with the version pinned
+in the URL (a fixed version, not an auto-upgrading kit) — so the components
 upgrade in the browser. See [`examples/`](./examples) for a complete site.
 
 ## Options
@@ -151,8 +152,9 @@ npm install
 npx @11ty/eleventy --serve
 ```
 
-The example site mirrors the `jekyll-webawesome` examples (same Web Awesome CDN
-kit and component spacing CSS) and exercises every supported component.
+The example site mirrors the `jekyll-webawesome` examples (same pinned Web
+Awesome CDN include and component spacing CSS) and exercises every supported
+component.
 
 ## License
 
