@@ -87,6 +87,13 @@ Keep that distinction in mind; they are not interchangeable.
 - `tsup` emits both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) plus `.d.ts`, targeting node18.
 - `markawesome-js` and `@11ty/eleventy` are kept **external** in `tsup.config.ts` so the consumer resolves a single copy of the engine (its internal markdown-it stays encapsulated). Don't bundle them.
 
+## Branching & Commits
+
+This repo works directly on `main` — there is **no feature-branch convention**.
+Commit changes, including version bumps, straight to `main`; do not create a branch
+when asked to commit. Releases are then taken as **tags from `main`** (see "Releases
+are tagged to match the published version" below).
+
 ## Releases are tagged to match the published version
 
 Every version published to npm gets a matching **GitHub Release**, so the repo's
