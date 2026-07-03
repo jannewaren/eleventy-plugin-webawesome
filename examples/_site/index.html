@@ -1332,6 +1332,94 @@ Alternative syntax with right tooltip
 </wa-carousel-item><wa-carousel-item><p><strong>Second Slide</strong></p>
 <p>More content here</p>
 </wa-carousel-item></wa-carousel>
+<h2>Random Content</h2>
+<p>Web Awesome's experimental <code>&lt;wa-random-content&gt;</code> shows one or more of its options at random (optionally rotating them) and hides the rest — all in Web Awesome's own runtime, so a static page gets a &quot;little bit dynamic&quot; rotating tips / testimonials / featured-content block with <strong>zero authored JavaScript</strong>. The fence is <code>......</code> (6 dots) carrying the params, with each option separated by a <code>&gt;&gt;&gt;</code> line, closed by <code>......</code>. Each option's Markdown is wrapped in a single <code>&lt;div&gt;</code> so Web Awesome sees exactly one selectable child per option. Params (order-independent): <code>mode</code> (<code>unique</code> default / <code>random</code> / <code>sequence</code>), <code>items:n</code>, <code>animation</code> (<code>fade</code>, <code>fade-up</code>, …), <code>autoplay</code>, and <code>autoplay-interval:ms</code>. A <code>:::wa-random-content … :::</code> block form is also accepted.</p>
+<h3>Basic tips rotator</h3>
+<p>By default (<code>mode</code> unspecified → Web Awesome's <code>unique</code>) one option is shown at random on each load. Reload the page to see a different tip.</p>
+<p>......
+💡 <strong>Tip:</strong> Reuse the <code>&gt;&gt;&gt;</code> separator you already know from details and popovers.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>🎨 <strong>Tip:</strong> Each option can hold full Markdown — <strong>bold</strong>, <code>code</code>, or a <a href="https://webawesome.com/">link</a>.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>🚀 <strong>Tip:</strong> Add <code>autoplay</code> to rotate options on a timer instead of only at load.
+......</p>
+<h3>Sequence mode</h3>
+<p><code>mode:sequence</code> walks the options in order rather than picking at random.</p>
+<p>......mode:sequence
+First in the sequence.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>Second in the sequence.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>Third in the sequence.
+......</p>
+<h3>Show two at once</h3>
+<p><code>items:2</code> shows two of the options at a time (Web Awesome shows a single child by default).</p>
+<p>......items:2
+Featured: <strong>Alpha</strong> — the first pick.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>Featured: <strong>Beta</strong> — the second pick.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>Featured: <strong>Gamma</strong> — the third pick.
+......</p>
+<h3>Autoplay with a fade</h3>
+<p><code>autoplay</code> rotates the shown option on a timer; <code>autoplay-interval:2000</code> sets the cadence (ms) and <code>animation:fade</code> eases the transition.</p>
+<p>......autoplay autoplay-interval:2000 animation:fade</p>
+<blockquote>
+<p>&quot;This rotating testimonial fades in on its own.&quot; — Reviewer One</p>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+<p>&quot;No JavaScript required on my end.&quot; — Reviewer Two
+......</p>
+</blockquote>
+<h3>Options containing other components</h3>
+<p>Because random-content runs <strong>last</strong> in the pipeline, an option can wrap an already-transformed component — here a nested callout. Each rendered callout ends up as the single <code>&lt;div&gt;</code> child Web Awesome selects.</p>
+<p>......mode:random</p>
+<wa-callout variant="success"><wa-icon slot="icon" name="circle-check" variant="solid"></wa-icon><p>You landed on the <strong>success</strong> option — nicely done.</p>
+</wa-callout>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<wa-callout variant="warning"><wa-icon slot="icon" name="triangle-exclamation" variant="solid"></wa-icon><p>Heads up — this <strong>warning</strong> option rotates in at random.</p>
+</wa-callout>
+<p>......</p>
+<h3>Alternative block syntax</h3>
+<p>The <code>:::wa-random-content</code> form takes the same params on its opening line.</p>
+<p>:::wa-random-content sequence animation:fade-up
+Block-form option one.</p>
+<blockquote>
+<blockquote>
+<blockquote></blockquote>
+</blockquote>
+</blockquote>
+<p>Block-form option two.
+:::</p>
 <h2>Video</h2>
 <p>Video and playlist components require <a href="https://webawesome.com/">Web Awesome Pro</a>
 (both are experimental). A <code>;;;</code> fence wraps a single <code>&lt;wa-video&gt;</code>: the body's
