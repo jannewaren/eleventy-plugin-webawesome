@@ -6,6 +6,8 @@ components. It is the thin glue around the
 [`markawesome-js`](https://github.com/jannewaren/markawesome-js) engine — the
 Node counterpart to the Ruby `markawesome` + `jekyll-webawesome` pair.
 
+> **🔗 See it live — [hosted examples site](https://jannewaren.github.io/eleventy-plugin-webawesome/).** Every supported component shown side by side: the markawesome markdown on the left, the live Web Awesome component it renders on the right. The clearest way to see what this project does.
+
 ```md
 :::info
 Write a **callout** in Markdown.
