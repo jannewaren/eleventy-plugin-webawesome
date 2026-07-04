@@ -15,6 +15,13 @@ permalink: "/"
   <a class="home-card" href="{{ ['/', category.id, '/'] | join | url }}">
     <strong>{{ category.title }}</strong>
     <span>{{ category.summary }}</span>
+    {% if category.components %}
+    <ul class="home-card__components">
+      {% for component in category.components %}
+      <li>{{ component }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </a>
   {% endfor %}
 </div>

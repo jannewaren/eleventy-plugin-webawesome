@@ -107,6 +107,7 @@ categories.push({
     'Callouts draw attention to important information; badges and tags label and count. ' +
     'Every example shows the exact markawesome markdown on the left and the live Web Awesome ' +
     'component on the right.',
+  components: ['<wa-callout>', '<wa-badge>', '<wa-tag>'],
   examples: [
     heading('Callout'),
     ...['info', 'brand', 'success', 'warning', 'danger', 'neutral'].map((t) =>
@@ -156,6 +157,7 @@ categories.push({
   id: 'buttons',
   title: 'Buttons & actions',
   intro: 'Buttons trigger actions or link out; copy buttons put text on the clipboard in one click.',
+  components: ['<wa-button>', '<wa-copy-button>'],
   examples: [
     heading('Button'),
     ...['brand', 'success', 'neutral', 'warning', 'danger'].map((v) =>
@@ -190,6 +192,7 @@ categories.push({
   intro:
     'Cards are flexible containers. The first image becomes the media, the first `#` heading the ' +
     'header, trailing links the footer — everything else is body content.',
+  components: ['<wa-card>'],
   examples: [
     ...['outlined', 'filled', 'filled-outlined', 'plain', 'accent'].map((a) =>
       ex(
@@ -215,6 +218,7 @@ categories.push({
   id: 'disclosure',
   title: 'Disclosure',
   intro: 'Progressively reveal content: expandable details, grouped accordions, tabs, and trees.',
+  components: ['<wa-details>', '<wa-accordion>', '<wa-tab-group>', '<wa-tree>'],
   examples: [
     heading('Details'),
     ...['outlined', 'filled', 'filled-outlined', 'plain'].map((a) =>
@@ -272,6 +276,7 @@ categories.push({
   id: 'overlays',
   title: 'Overlays',
   intro: 'Floating UI attached to a trigger: modal dialogs, popovers, and inline tooltips.',
+  components: ['<wa-dialog>', '<wa-popover>', '<wa-tooltip>'],
   examples: [
     heading('Dialog'),
     ex('Basic', '???\nOpen dialog\n>>>\nDialog content with **markdown** support.\n???', 'The text before `>>>` becomes the trigger button; the text after is the dialog body.'),
@@ -304,6 +309,7 @@ categories.push({
   intro:
     'Standalone icons plus build-time-baked dates. Icons, dates, and relative times render text ' +
     'into shadow DOM, so they need Web Awesome’s runtime to appear.',
+  components: ['<wa-icon>', '<wa-format-date>', '<wa-relative-time>'],
   examples: [
     heading('Icon'),
     ex('Inline', 'Open the $$$gear settings panel to continue.', 'Inline `$$$name` drops a decorative icon mid-prose.'),
@@ -366,6 +372,7 @@ categories.push({
   id: 'media',
   title: 'Media',
   intro: 'Carousels, before/after comparisons, video, and randomly-rotating content.',
+  components: ['<wa-carousel>', '<wa-comparison>', '<wa-video>', '<wa-random-content>'],
   examples: [
     heading('Carousel'),
     ex(
@@ -425,6 +432,7 @@ categories.push({
   intro:
     'Zero-media-query layout primitives that map to Web Awesome CSS utilities: grid, stack, ' +
     'cluster, split, flank, and frame.',
+  components: ['.wa-grid', '.wa-stack', '.wa-cluster', '.wa-split', '.wa-flank', '.wa-frame'],
   examples: [
     heading('Grid'),
     ex(
@@ -492,6 +500,10 @@ for (const cat of categories) {
   out += `  - id: ${q(cat.id)}\n`;
   out += `    title: ${q(cat.title)}\n`;
   if (cat.intro) out += `    intro: ${block(cat.intro, 6)}\n`;
+  if (cat.components) {
+    out += '    components:\n';
+    for (const c of cat.components) out += `      - ${q(c)}\n`;
+  }
   out += '    examples:\n';
   for (const item of cat.examples) {
     if (item.heading) {
