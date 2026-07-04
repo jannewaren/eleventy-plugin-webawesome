@@ -6,6 +6,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-04
+
 ### Added
 
 - Example site's new `## Random Content` section exercises markawesome-js's new `random-content` transformer — Web Awesome's experimental `<wa-random-content>`, which shows one or more of its options at random (optionally rotating) and hides the rest, with zero authored JavaScript. Six cases: a basic tips rotator, `mode:sequence`, `items:2` (two options shown at once), `autoplay autoplay-interval:2000 animation:fade`, an option wrapping a nested `:::success`/`:::warning` callout (proving random-content runs **last** and wraps already-transformed components), and the `:::wa-random-content` block form. Requires the unreleased `markawesome-js`; local verification needs the workspace `markawesome-js` linked (e.g. `npm link` / a `file:` dep) since nothing is published yet. Verified live in the browser against WA 3.10.0 with the linked engine: all six `<wa-random-content>` elements upgrade (`:defined`, shadow DOM present), each shows the configured number of `<div>` options (`items:2` shows two, the rest show one), the nested callout renders inside its option, and there are zero Web Awesome console errors. (The committed `_site/` stays built against the published `markawesome-js`, so the section renders as literal text there until the engine ships — the same state as the `Tree` section.)
@@ -102,6 +104,7 @@ Initial release.
   feature).
 - `markawesome-js` `^0.1.0` (regular dependency).
 
-[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.3.0
 [0.2.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.2.0
 [0.1.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.1.0
