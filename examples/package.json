@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "eleventy-plugin-webawesome": "file:.."
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0",
+    "markawesome-js": "^0.3.0",
+    "prismjs": "^1.29.0"
   }
 }

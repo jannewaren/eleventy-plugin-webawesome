@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="wa-theme-tailspin wa-palette-vogue wa-brand-indigo" data-fa-kit-code="4f5838335e">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if title %}{{ title }} · {% endif %}Eleventy Web Awesome Plugin Examples</title>
+
+  <!-- Web Awesome — pinned CDN (webawesome@3.10.0); replaces the opaque kit script -->
+  <!-- Theme + color palette -->
+  <link rel="stylesheet" href="https://ka-p.webawesome.com/kit/43e2fc18755d4267/webawesome@3.10.0/styles/themes/tailspin.css" />
+  <link rel="stylesheet" href="https://ka-p.webawesome.com/kit/43e2fc18755d4267/webawesome@3.10.0/styles/color/palettes/vogue.css" />
+  <!-- Native styles / CSS reset -->
+  <link rel="stylesheet" href="https://ka-p.webawesome.com/kit/43e2fc18755d4267/webawesome@3.10.0/styles/native.css" />
+  <!-- CSS utilities -->
+  <link rel="stylesheet" href="https://ka-p.webawesome.com/kit/43e2fc18755d4267/webawesome@3.10.0/styles/utilities.css" />
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" />
+  <!-- Web Awesome autoloader -->
+  <script type="module" src="https://ka-p.webawesome.com/kit/43e2fc18755d4267/webawesome@3.10.0/webawesome.loader.js"></script>
+
+  <!-- Custom theme overrides -->
+  <style>
+    :root {
+      --wa-font-family-body: Inter, sans-serif;
+      --wa-font-family-heading: Inter, sans-serif;
+      --wa-font-family-code: ui-monospace, monospace;
+      --wa-font-family-longform: ui-serif, serif;
+      --wa-font-weight-body: 400;
+      --wa-font-weight-heading: 700;
+      --wa-font-weight-code: 400;
+      --wa-font-weight-longform: 400;
+      --wa-border-radius-scale: 1;
+      --wa-border-width-scale: 1;
+      --wa-space-scale: 0.875;
+    }
+  </style>
+
+  <!-- Syntax theme (Prism) + shared example-page styles -->
+  <link rel="stylesheet" href="{{ '/assets/prism.css' | url }}" />
+  <link rel="stylesheet" href="{{ '/assets/examples.css' | url }}" />
+</head>
+<body>
+  <wa-page mobile-breakpoint="920">
+    <header slot="header" class="wa-split site-header">
+      <a href="{{ '/' | url }}" class="site-title"><strong>Eleventy Web Awesome Plugin Examples</strong></a>
+      <a href="https://github.com/jannewaren/eleventy-plugin-webawesome" target="_blank" rel="noopener noreferrer">
+        <wa-icon family="brands" name="github" label="GitHub"></wa-icon>
+      </a>
+    </header>
+
+    <nav slot="subheader" class="wa-cluster wa-gap-xs site-subheader">
+      <wa-button data-toggle-nav appearance="plain" class="wa-mobile-only" aria-label="Toggle navigation">
+        <wa-icon name="bars" label="Menu"></wa-icon>
+      </wa-button>
+      <span>{{ title }}</span>
+    </nav>
+
+    <nav slot="navigation-header"><strong>Components</strong></nav>
+    <nav slot="navigation" class="wa-stack wa-gap-3xs site-nav">
+      <a href="{{ '/' | url }}" data-drawer="close"{% if page.url == '/' %} aria-current="page"{% endif %}>Overview</a>
+      {% for category in examples.categories %}
+      <a href="{{ ['/', category.id, '/'] | join | url }}" data-drawer="close"{% if page.url == ['/', category.id, '/'] | join %} aria-current="page"{% endif %}>{{ category.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <main class="wa-stack wa-gap-l">
+      {{ content | safe }}
+    </main>
+
+    <footer slot="footer" class="site-footer">
+      <small>Built with the
+        <a href="https://github.com/jannewaren/eleventy-plugin-webawesome">eleventy-plugin-webawesome</a>
+        plugin and <a href="https://webawesome.com">Web Awesome</a>. Every example is generated from a
+        single shared dataset.</small>
+    </footer>
+  </wa-page>
+</body>
+</html>

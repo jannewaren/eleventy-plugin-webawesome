@@ -146,15 +146,26 @@ block components revert to rendering empty.
 
 ## Examples site
 
+**🔗 [View the hosted examples site →](https://jannewaren.github.io/eleventy-plugin-webawesome/)**
+
+A multi-page, navigable demo showing every supported component **side by side** — the
+markawesome markdown on the left, the live Web Awesome component it renders on the right.
+
+To run it locally (the plugin must be built first, since the example site depends on it
+via `file:..`):
+
 ```bash
+npm ci && npm run build   # build the plugin's dist/
 cd examples
 npm install
 npx @11ty/eleventy --serve
 ```
 
-The example site mirrors the `jekyll-webawesome` examples (same pinned Web
-Awesome CDN include and component spacing CSS) and exercises every supported
-component.
+Then visit `http://localhost:8080/eleventy-plugin-webawesome/`.
+
+The example site mirrors the `jekyll-webawesome` examples: it is generated from the **same
+byte-identical** shared dataset (`examples/_data/examples.yaml`) and uses the same pinned
+Web Awesome CDN include and shared CSS, so the two sites stay in lockstep.
 
 ## License
 

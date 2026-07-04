@@ -1,25 +1,17 @@
 import webawesome from 'eleventy-plugin-webawesome';
-import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 export default function (eleventyConfig) {
-  // Highlight fenced code blocks (the markawesome syntax examples).
-  eleventyConfig.addPlugin(syntaxHighlight);
-
-  // The plugin: transform the markawesome Markdown dialect into Web Awesome
-  // components before Eleventy's markdown renderer runs.
+  // The plugin under test: transform the markawesome Markdown dialect into Web
+  // Awesome components. (The example pages are data-driven .njk, so the live
+  // previews are pre-rendered in _data/examples.js via markawesome-js; the
+  // plugin stays registered because it is the thing this site demonstrates.)
   eleventyConfig.addPlugin(webawesome, {
     debug: true,
     imageDialog: { defaultWidth: '90vh' },
   });
 
-  // No need to enable raw HTML here — the plugin turns on `html: true` and
-  // installs a block rule so the spliced <wa-*> components render correctly.
-
-  // Copy image, video + download assets referenced by index.md.
-  eleventyConfig.addPassthroughCopy('*.png');
-  eleventyConfig.addPassthroughCopy('*.mp4');
-  eleventyConfig.addPassthroughCopy('*.jpg');
-  eleventyConfig.addPassthroughCopy('downloads');
+  // Copy the shared stylesheet, syntax theme, and demo media.
+  eleventyConfig.addPassthroughCopy('assets');
 
   return {
     dir: {
@@ -27,8 +19,10 @@ export default function (eleventyConfig) {
       output: '_site',
       includes: '_includes',
     },
-    // Don't run a template engine over the markdown bodies — the content is the
-    // markawesome dialect, processed by the preprocessor, not Nunjucks/Liquid.
+    // Hosted under https://jannewaren.github.io/eleventy-plugin-webawesome/ on
+    // GitHub Pages; `| url` in the templates prepends this to internal links.
+    pathPrefix: '/eleventy-plugin-webawesome',
+    // Category pages are .njk; there are no markdown bodies to run an engine over.
     markdownTemplateEngine: false,
   };
 }
