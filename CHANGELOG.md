@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-07-04
+
+### Changed
+
+- Bump `markawesome-js` dependency to `^0.3.1`, pulling the engine that fixes horizontal-card body overflow (a multi-block `===horizontal` body — e.g. a heading plus a paragraph — is now wrapped in a single `<div>` so it no longer spills below the card). The examples site drops its horizontal-card CSS workaround now that the engine handles this.
+
 ## [0.3.1] - 2026-07-04
 
 ### Changed

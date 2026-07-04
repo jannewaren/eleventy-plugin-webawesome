@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "js-yaml": "^4.1.0",
-    "markawesome-js": "^0.3.0",
+    "markawesome-js": "^0.3.1",
     "prismjs": "^1.29.0"
   }
 }
