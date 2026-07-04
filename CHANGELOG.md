@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-07-04
+
+### Changed
+
+- Bump `markawesome-js` dependency to `^0.3.0`, pulling the engine that ships the `tree` (`<wa-tree>`) and `random-content` (`<wa-random-content>`) transformers. The previous `^0.2.0` pinned installs to 0.2.x (npm's caret locks the minor on 0.x), so Eleventy users now get the new components.
+
 ## [0.3.0] - 2026-07-04
 
 ### Added
@@ -104,7 +110,8 @@ Initial release.
   feature).
 - `markawesome-js` `^0.1.0` (regular dependency).
 
-[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/jannewaren/eleventy-plugin-webawesome/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.3.1
 [0.3.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.3.0
 [0.2.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.2.0
 [0.1.0]: https://github.com/jannewaren/eleventy-plugin-webawesome/releases/tag/v0.1.0
