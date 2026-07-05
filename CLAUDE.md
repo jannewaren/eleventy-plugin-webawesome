@@ -10,7 +10,7 @@ It is the Node counterpart to the Ruby `markawesome` + `jekyll-webawesome` pair 
 
 ## The markawesome ecosystem — keep the syntax in sync
 
-The Markawesome-flavoured Markdown syntax spans **five repositories that must
+The Markawesome-flavoured Markdown syntax spans **six repositories that must
 stay in lockstep**:
 
 | Repo | Role | Stack | Registry |
@@ -20,6 +20,7 @@ stay in lockstep**:
 | `jekyll-webawesome` | **Uses** it (Jekyll integration) | Ruby | RubyGems |
 | `eleventy-plugin-webawesome` | **Uses** it (Eleventy integration) | Node | npm |
 | `markawesome-vscode` | **Produces** it (snippets/completions/validation) | TypeScript | VS Code Marketplace |
+| `markawesome-skill` | **Teaches** it (AI authoring skill) | Markdown | npm |
 
 **This repo's role:** **uses** the syntax — it consumes the `markawesome-js` engine
 and defines no syntax of its own. Syntax changes belong in the engines, not here.
