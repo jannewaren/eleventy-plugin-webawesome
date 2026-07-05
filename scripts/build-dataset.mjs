@@ -275,13 +275,33 @@ categories.push({
 categories.push({
   id: 'overlays',
   title: 'Overlays',
-  intro: 'Floating UI attached to a trigger: modal dialogs, popovers, and inline tooltips.',
+  intro:
+    'Floating UI attached to a trigger: modal dialogs, popovers, and inline tooltips. ' +
+    'Plain Markdown images can also auto-open in a click-to-zoom dialog when the plugin’s ' +
+    'image-dialog option is on.',
   components: ['<wa-dialog>', '<wa-popover>', '<wa-tooltip>'],
   examples: [
     heading('Dialog'),
     ex('Basic', '???\nOpen dialog\n>>>\nDialog content with **markdown** support.\n???', 'The text before `>>>` becomes the trigger button; the text after is the dialog body.'),
     ex('Light dismiss', '???light-dismiss\nOpen (click outside to close)\n>>>\nClicking the overlay dismisses this dialog.\n???'),
     ex('Custom width', '???width:400px\nOpen a narrow dialog\n>>>\nThis dialog is 400px wide.\n???'),
+
+    heading('Image dialog'),
+    ex(
+      'Auto-zoom',
+      '![A porch swing by a forest pond](../assets/photo.jpg)',
+      'With the plugin’s image-dialog option enabled, every standalone Markdown image becomes a click-to-zoom `<wa-dialog>` — no sigils needed. This whole demo runs with it on, so click the image.',
+    ),
+    ex(
+      'Custom dialog width',
+      '![A porch swing by a forest pond](../assets/photo.jpg "60%")',
+      'A CSS width in the image title — `"60%"`, `"800px"`, `"90vw"` — sizes that image’s dialog. Thumbnails look identical until you open them.',
+    ),
+    ex(
+      'Opt out with nodialog',
+      '![A porch swing by a forest pond](../assets/photo.jpg "nodialog")',
+      'Add `"nodialog"` to the title to leave an image as a plain, non-clickable `<img>`.',
+    ),
 
     heading('Popover'),
     ...['top', 'bottom', 'left', 'right'].map((p) =>
