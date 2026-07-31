@@ -6,6 +6,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Examples site now loads the **pinned Web Awesome 3.11.0 CDN** (`examples/_includes/category.njk`), up from 3.10.0, in lockstep with the `jekyll-webawesome` examples. 3.11.0 (July 30th, 2026) is additive for this site: it adds `<wa-otp-input>`, `<wa-pagination>` and `<wa-data-grid>`, moves `<wa-toast>`/`<wa-toast-item>` from Pro to Core, and gives every component a CSS part named after itself (softly deprecating the generic `base` part). Nothing the examples render was removed or renamed. One behaviour change to be aware of when eyeballing the output: WA dropped `font-variant-numeric: tabular-nums` from its default `<table>` styles, so numeric Markdown tables now need the opt-in `wa-tabular-nums` class to keep digits column-aligned.
+
 ## [0.3.2] - 2026-07-04
 
 ### Changed
