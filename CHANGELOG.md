@@ -6,8 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-26
+
 ### Changed
 
+- **Requires `markawesome-js ^0.4.0`** (up from `^0.3.1`), which brings the new **`plainMarkdown` renderer** to Eleventy users — it degrades every Web Awesome component to its closest GFM equivalent, for serving per-page `.md` endpoints and `llms.txt` content that LLM consumers can read without parsing `<wa-*>` tags. A caret range on a `0.x` version will not cross a minor on its own, so this needed an explicit bump. Also picks up the repeated-dialog DOM id fix: dialogs that differed only by a param, or were byte-identical, shared an id and every trigger resolved to the first of them.
 - Examples site now loads the **pinned Web Awesome 3.12.0 CDN** (`examples/_includes/category.njk`), up from 3.11.0, in lockstep with the `jekyll-webawesome` examples. 3.12.0 (August 2026) changes nothing this site renders: its only component-level additions are navigation attributes (`href`/`target`/`rel`/`download`) on `<wa-dropdown-item>` and a `filterOptions` column option on `<wa-data-grid>` — neither component appears in the examples, and neither has a Markawesome syntax. Everything else is internal to Web Awesome's own shadow DOM, and three of those fixes improve the examples for free: `<wa-button>` keeps its accessible name (and gains `aria-busy`) while `loading`, duplicate landmarks were removed from `<wa-card>`/`<wa-dialog>`/`<wa-drawer>`, and `<wa-tooltip>` light dismiss handles target presses and page clicks better.
 - Examples site now loads the **pinned Web Awesome 3.11.0 CDN** (`examples/_includes/category.njk`), up from 3.10.0, in lockstep with the `jekyll-webawesome` examples. 3.11.0 (July 30th, 2026) is additive for this site: it adds `<wa-otp-input>`, `<wa-pagination>` and `<wa-data-grid>`, moves `<wa-toast>`/`<wa-toast-item>` from Pro to Core, and gives every component a CSS part named after itself (softly deprecating the generic `base` part). Nothing the examples render was removed or renamed. One behaviour change to be aware of when eyeballing the output: WA dropped `font-variant-numeric: tabular-nums` from its default `<table>` styles, so numeric Markdown tables now need the opt-in `wa-tabular-nums` class to keep digits column-aligned.
 
