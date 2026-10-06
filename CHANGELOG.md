@@ -6,6 +6,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Examples site now loads the **pinned Web Awesome 3.14.0 CDN** (`examples/_includes/category.njk`), up from 3.12.0 (covers 3.13.0 too), in lockstep with the `jekyll-webawesome` examples. Additive for this site: new `<wa-stepper>`/`<wa-step>` and `<wa-tag-input>`, a label slot with `label-placement` on `<wa-divider>`, and `<wa-accordion>`/`<wa-random-content>` promoted to stable. Nothing the examples render was removed or renamed.
+
+### Fixed
+
+- **The "Custom dialog width" image-dialog example now opens its own dialog.** `examples/_data/examples.yaml` is byte-identical to `jekyll-webawesome`'s copy again: that repo had given the example distinct alt text (the dialog id hashes trigger plus body, so reusing the previous example's alt text made both share an id and silently open the 90vh dialog), and the fix never reached this copy.
+
 ## [0.4.0] - 2026-08-26
 
 ### Changed
