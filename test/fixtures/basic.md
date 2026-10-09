@@ -31,3 +31,11 @@ Click to expand
 >>>
 A **detailed** explanation with a [link](https://example.com).
 ^^^
+
+--- start Release notes ---
+
+>>>>>> vertical
+- [x] Install
+- [ ] Configure
+  Set your **options**
+>>>>>>

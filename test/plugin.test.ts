@@ -61,6 +61,16 @@ describe('eleventy-plugin-webawesome', () => {
     expect(content).not.toMatch(/<p>\s*<wa-details/);
     expect(content).not.toContain('<p></span>'); // wa-details summary not ejected
 
+    // Labeled divider and display-only stepper (markawesome-js 0.5.0) also
+    // pass through as blocks: no <p> wrapper, label and steps intact.
+    expect(content).toContain('<wa-divider label-placement="start">Release notes</wa-divider>');
+    expect(content).not.toMatch(/<p>\s*<wa-divider/);
+    expect(content).toContain(
+      '<wa-stepper orientation="vertical" active="step-2"><wa-step name="step-1" completed>Install</wa-step>' +
+        '<wa-step name="step-2">Configure<span slot="description">Set your <strong>options</strong></span></wa-step></wa-stepper>',
+    );
+    expect(content).not.toMatch(/<p>\s*<wa-stepper/);
+
     // Fenced code block survived (not turned into a callout) and rendered as code.
     expect(content).toContain('<pre');
     expect(content).toContain(':::info'); // literal text preserved inside the code block
