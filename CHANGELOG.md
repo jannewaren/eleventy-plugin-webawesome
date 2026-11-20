@@ -6,6 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-20
+
+- **Requires `markawesome-js ^0.6.0`** (up from `^0.5.0`), which brings three new Web Awesome 3.15.0 components (all experimental upstream) to Eleventy sites: the **lightbox** gallery (`::::lightbox` around Markdown image lines → `<wa-lightbox>`; linked thumbnails, video items, captions, `thumbnails`/`loop`/`no-zoom` flags and square/landscape/portrait/natural crops), the **counter** (`[[[ 2026-12-24 countdown finished:"We're live!" ]]]` / `countup` → `<wa-counter>`), and the **number ticker** (`[[[ 87% ]]]`, `[[[ 18452.75 currency:EUR ]]]` → `<wa-number-ticker>`). A caret range on a `0.x` version will not cross a minor on its own, so this needed an explicit bump. `test/plugin.test.ts` now asserts the lightbox renders end-to-end as a block (no `<p>` wrapper) and the counter and ticker stay inline in prose.
+- The examples site's `markawesome-js` dev dependency moves to `^0.6.0` as well.
+
 ### Added
 
 - **Examples for the new lightbox, counter and number ticker.** The Media page gains a *Lightbox* section (a gallery with a thumbnail strip, captions, a linked separate thumbnail and a video item; landscape thumbnails; a gallery inside a card); the Icons & dates page gains *Counter* (a countdown, a past-date countdown showing its `finished` text, a count-up with a unit range and short labels, a clock-style countdown) and *Number ticker* (EUR currency, `87%`, a start value with `decimals:2`) sections. Each was checked in the browser against the Web Awesome 3.15.0 CDN, measuring the live DOM: square 130×130 and 4:3 thumbnails in the grid, the viewer opening on the clicked item with its caption and the full-size image, the video item playing, counters ticking and the clock's `:` delimiters, and tickers animating to €18,452.75 / 87% / 12,000.00. `examples/_data/examples.yaml` stays byte-identical between `jekyll-webawesome` and `eleventy-plugin-webawesome`.

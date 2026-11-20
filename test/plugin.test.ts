@@ -71,6 +71,18 @@ describe('eleventy-plugin-webawesome', () => {
     );
     expect(content).not.toMatch(/<p>\s*<wa-stepper/);
 
+    // Lightbox, counter and number ticker (markawesome-js 0.6.0): the gallery
+    // passes through as a block; counter and ticker stay inline in the prose.
+    expect(content).toContain(
+      '<wa-lightbox class="wa-grid" with-thumbnails><wa-lightbox-item src="tram.jpg" caption="Tram 28"><img src="tram.jpg" alt="Tram"',
+    );
+    expect(content).toContain('<wa-lightbox-item type="video" src="clip.mp4" caption="From above"><img src="poster.jpg"');
+    expect(content).not.toMatch(/<p>\s*<wa-lightbox/);
+    expect(content).toContain(
+      '<p>Launch in <wa-counter date="2026-12-24"><span slot="finished">We\'re live!</span></wa-counter> and ' +
+        '<wa-number-ticker value="0.87" type="percent"></wa-number-ticker> happy.</p>',
+    );
+
     // Fenced code block survived (not turned into a callout) and rendered as code.
     expect(content).toContain('<pre');
     expect(content).toContain(':::info'); // literal text preserved inside the code block

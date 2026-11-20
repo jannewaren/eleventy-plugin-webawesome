@@ -39,3 +39,10 @@ A **detailed** explanation with a [link](https://example.com).
 - [ ] Configure
   Set your **options**
 >>>>>>
+
+::::lightbox thumbnails
+![Tram](tram.jpg "Tram 28")
+[![Clip](poster.jpg)](clip.mp4 "From above")
+::::
+
+Launch in [[[ 2026-12-24 countdown finished:"We're live!" ]]] and [[[ 87% ]]] happy.
