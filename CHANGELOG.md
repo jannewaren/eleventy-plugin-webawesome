@@ -6,6 +6,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **Examples site pinned to Web Awesome 3.15.0.** The six CDN URLs in `examples/_includes/category.njk` move from 3.14.0 to 3.15.0 (November 17th, 2026). The 3.15.0 enum diff is purely additive, so no existing example changes.
+
 ## [0.5.0] - 2026-10-09
 
 ### Added
